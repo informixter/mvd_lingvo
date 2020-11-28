@@ -1,0 +1,18 @@
+<app-header [hideLogo]="state === 'AUTH'" (onLogout)="onLogout()" (toAuth)="toAuth()"></app-header>
+<section>
+	<app-loader *ngIf="state === 'LOADING'"></app-loader>
+	<app-auth *ngIf="state === 'AUTH'" (onAuth)="onAuth($event)"></app-auth>
+	<app-dashboard *ngIf="state === 'DASHBOARD'"
+				   (onNewConnector)="state = 'CONNECTOR'"
+				   (openConnectorEdit)="openConnectorEdit($event)"
+				   (openConnectorTest)="openConnectorTest($event)"
+	></app-dashboard>
+	<app-error *ngIf="state === 'ERROR'" [text]="errorText"></app-error>
+	<app-connector-detail *ngIf="state === 'CONNECTOR'"
+	                      [connectorForEdit]="connectorForEdit"
+	                      (onBack)="returnFromConnectorDetails($event)"></app-connector-detail>
+	<app-connector-test *ngIf="state === 'TEST'"
+						  [connectorForEdit]="connectorForEdit"
+						  (onBack)="returnFromConnectorDetails($event)"></app-connector-test>
+</section>
+<app-footer></app-footer>

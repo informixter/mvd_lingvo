@@ -1,0 +1,26 @@
+<h4>Применение преобразователя - {{connectorForEdit.type === 'GRAMMA' ? 'Грамматика' : '1 лицо в 3'}}</h4>
+
+<form (submit)="submit()">
+
+	<div *ngIf="connectorForEdit" class="row test-wrapper">
+		<div class="col-12">
+			<div class="form-group">
+				<label>Исходный текст</label>
+				<textarea [(ngModel)]="input" name="input" class="form-control" rows="6"></textarea>
+			</div>
+		</div>
+		<div class="col-12 result-words w-100">
+			<span *ngFor="let word of outputWords" [style.background]="word.updated ? 'yellow' : 'none'" class="mr-1">{{word.text}}</span>
+			<!--<div class="form-group">
+				<label>Результат</label>
+				<textarea [(ngModel)]="output" name="output" class="form-control" rows="6"></textarea>
+			</div>-->
+		</div>
+	</div>
+
+	<div class="mt-3">
+		<button type="submit" class="btn btn-outline-primary btn-sm">Применить</button>
+		<button (click)="onBack.emit()" class="btn text-danger btn-sm ml-2">Отмена</button>
+	</div>
+
+</form>
