@@ -1,6 +1,5 @@
-import {Component, Input, OnInit, Output, EventEmitter, OnDestroy, ChangeDetectorRef} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter, ChangeDetectorRef} from '@angular/core';
 import {MainService} from "../main.service";
-import {Subscription} from "rxjs";
 
 declare var window : any;
 
@@ -16,12 +15,13 @@ export class ConnectorTestComponent implements OnInit
 	@Output() onBack = new EventEmitter();
 
 	remote = window.require('electron').remote;
-
+	clipboard = window.require('electron').clipboard;
 
 	input = '';
 	output = '';
-	outputWords = [];
+	outputLines = [];
 	showOriginal = false;
+	copied = false;
 
 	constructor (private service : MainService, private cdr : ChangeDetectorRef)
 	{
@@ -51,16 +51,35 @@ export class ConnectorTestComponent implements OnInit
 				break;
 		}
 
-		let originalWords = this.input.split(' '),
-			updatedWords = this.output.split(' ');
+		let originalLines = this.input.split("\n"),
+			updatedLines = this.output.split("\n");
 
-		this.outputWords = updatedWords.map((word, i) =>
+
+		console.log(updatedLines);
+		this.outputLines = updatedLines.map((line, i) =>
 		{
-			return {
-				text : word,
-				original : originalWords[i],
-				updated :  word !== originalWords[i]
-			};
+			let originalWords : any = originalLines[i].split(' '),
+				updatedWords = line.split(' ');
+
+			let updated = updatedWords.map((word, j) =>
+			{
+				return {
+					text : word,
+					original : originalWords[j],
+					updated : word !== originalWords[j]
+				};
+			});
+
+			console.log(updated);
+
+			return updated;
 		});
+	}
+
+	copyResult ()
+	{
+		this.copied = true;
+		setTimeout(() => this.copied = false, 1000);
+		this.clipboard.writeText(this.output);
 	}
 }

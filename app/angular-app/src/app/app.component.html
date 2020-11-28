@@ -1,4 +1,4 @@
-<app-header [hideLogo]="state === 'AUTH'" (onLogout)="onLogout()" (toAuth)="toAuth()"></app-header>
+<app-header [hideLogo]="state === 'AUTH' || state === 'PROMO'" (onLogout)="onLogout()" (toAuth)="toAuth()" [showBack]="state === 'TEST' || state === 'CONNECTOR'" (onBack)="returnFromConnectorDetails()"></app-header>
 <section>
 	<app-loader *ngIf="state === 'LOADING'"></app-loader>
 	<app-auth *ngIf="state === 'AUTH'" (onAuth)="onAuth($event)"></app-auth>
@@ -8,6 +8,7 @@
 				   (openConnectorTest)="openConnectorTest($event)"
 	></app-dashboard>
 	<app-error *ngIf="state === 'ERROR'" [text]="errorText"></app-error>
+	<app-promo *ngIf="state === 'PROMO'"></app-promo>
 	<app-connector-detail *ngIf="state === 'CONNECTOR'"
 	                      [connectorForEdit]="connectorForEdit"
 	                      (onBack)="returnFromConnectorDetails($event)"></app-connector-detail>
@@ -15,4 +16,4 @@
 						  [connectorForEdit]="connectorForEdit"
 						  (onBack)="returnFromConnectorDetails($event)"></app-connector-test>
 </section>
-<app-footer></app-footer>
+<app-footer *ngIf="state !== 'PROMO'"></app-footer>

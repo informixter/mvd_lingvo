@@ -12,8 +12,10 @@ export class HeaderComponent implements OnInit
 {
 
 	@Input() hideLogo = false;
+	@Input() showBack = false;
 	@Output() onLogout = new EventEmitter();
 	@Output() toAuth = new EventEmitter();
+	@Output() onBack = new EventEmitter();
 
 	constructor (public service : MainService)
 	{

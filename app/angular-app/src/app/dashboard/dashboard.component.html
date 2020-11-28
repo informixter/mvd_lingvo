@@ -5,16 +5,19 @@
 	</button>
 </div>
 
-<div *ngFor="let connector of service.settings.connectors" class="card mb-3">
+<p class="text-muted mb-4">
+	Преобразователи изменяют текст в зависимости от типа (например, меняют личные местоимения на 3 лицо).
+	Используйте сочетания клавиш, чтобы применить их к выделенному тексту (сначала скопируйте в буфер с помощью Ctrl-C).
+	<br/><br/>Вы так же можете воспользоваться подробным анализом, чтобы детально увидеть, как преобразуется текст. При выключении преобразователя сочетние клавиш работать не будет.
+</p>
+
+<div *ngFor="let connector of service.settings.connectors" class="card mb-4">
 	<div class="card-header d-flex justify-content-between" [class.alert-info]="connector.enabled">
 		<b class="w-50 card-title">
 			<span *ngIf="connector.type === 'FIRST_TO_THIRD'">Первое лицо в третье лицо</span>
-			<span *ngIf="connector.type === 'GRAMMA'">Орфография</span>
+			<span *ngIf="connector.type === 'GRAMMA'">Исправление грамматических ошибок</span>
 		</b>
 		<span>
-			<a (click)="testConnector(connector)" class="hover-opacity" title="Запустить вручную">
-				<i class="material-icons text-info">format_size</i>
-			</a>
 			<a (click)="editConnector(connector)" class="hover-opacity ml-2" title="Редактировать">
 				<i class="material-icons text-info">edit</i>
 			</a>
@@ -23,11 +26,26 @@
 			</a>
 		</span>
 	</div>
-	<div class="card-body">
-		<div class="d-flex">
-			<div class="w-50">Сочетание клавиш:</div>
-			<div class="w-50 text-muted text-nowrap overflow-hidden">{{getItemShortcut(connector)}}</div>
+	<div class="card-body py-3">
+
+		<div class="row">
+			<div class="col-6">
+				<h5>Ctrl+C, затем {{getItemShortcut(connector)}}</h5>
+			</div>
+			<div class="col-4">
+				<div>
+					<a (click)="testConnector(connector)" class="btn btn-outline-primary btn-sm">Подробный анализ текста</a>
+				</div>
+			</div>
+			<div class="col-2 pt-2">
+				<a *ngIf="connector.enabled" (click)="toggleConnector(connector, false)" href="#" class="text-danger hover-opacity">Выкл.</a>
+				<a *ngIf="!connector.enabled" (click)="toggleConnector(connector, true)" href="#" class="text-success hover-opacity">Вкл.</a>
+			</div>
 		</div>
+		<!--<div class="d-flex">
+			<div class="w-50">Сочетание клавиш:</div>
+			<div class="w-50 text-muted text-nowrap overflow-hidden">Ctrl+C, затем {{getItemShortcut(connector)}}</div>
+		</div>-->
 		<!--<div class="d-flex">
 			<div class="w-50">Действие:</div>
 			<div class="w-50">
@@ -35,13 +53,22 @@
 				<span *ngIf="connector.type === 'GRAMMA'">Орфография</span>
 			</div>
 		</div>-->
+
+		<!--<div class="d-flex">
+			<div class="w-50"></div>
+			<div class="w-50">
+				<a (click)="toggleConnector(connector, false)" href="#" class="text-primary hover-opacity">Перейти к подробному анализу</a>
+			</div>
+		</div>
+
 		<div class="d-flex mt-3">
 			<div class="w-50"></div>
 			<div class="w-50">
-				<a *ngIf="connector.enabled" (click)="toggleConnector(connector, false)" href="#" class="text-danger hover-opacity">Выключить</a>
-				<a *ngIf="!connector.enabled" (click)="toggleConnector(connector, true)" href="#" class="text-success hover-opacity">Включить</a>
+				<a *ngIf="connector.enabled" (click)="toggleConnector(connector, false)" href="#" class="text-danger hover-opacity">Выключить сочетание клавиш</a>
+				<a *ngIf="!connector.enabled" (click)="toggleConnector(connector, true)" href="#" class="text-success hover-opacity">Включить сочетание клавиш</a>
 			</div>
-		</div>
+		</div>-->
+
 	</div>
 </div>
 

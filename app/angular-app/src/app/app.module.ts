@@ -15,10 +15,11 @@ import {FormsModule} from "@angular/forms";
 import {ErrorInterceptor} from "../error.interceptor";
 import { ConnectorDetailComponent } from './connector-detail/connector-detail.component';
 import {ConnectorTestComponent} from "./connector-test/connector-test.component";
+import {PromoComponent} from "./promo/promo.component";
 
 @NgModule({
 	declarations: [AppComponent, AuthComponent, DashboardComponent, HeaderComponent,
-		FooterComponent, LoaderComponent, ErrorComponent, ConnectorDetailComponent, ConnectorTestComponent],
+		FooterComponent, LoaderComponent, ErrorComponent, ConnectorDetailComponent, ConnectorTestComponent, PromoComponent],
 	imports: [BrowserModule, HttpClientModule, FormsModule],
 	providers: [MainService, {
 		provide: APP_BASE_HREF,

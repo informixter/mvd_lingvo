@@ -11,11 +11,13 @@ app.allowRendererProcessReuse = false;
 function createWindow()
 {
 	win = new BrowserWindow({
-		width: serve ? 1200 : 450,
-		height: serve ? 900 : 600,
+		width: serve ? 800 : 600,
+		height: serve ? 800 : 800,
 		show: true,
 		fullscreenable: false,
-		resizable: false,
+		minWidth : 800,
+		minHeight : 800,
+		resizable: true,
 		backgroundColor : "transparent",
 		webPreferences: {
 			nodeIntegration: true,

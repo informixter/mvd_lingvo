@@ -1,6 +1,12 @@
-<header class="d-flex justify-content-center">
+<header class="d-flex justify-content-between">
+	<div style="width:  200px;">
+		<a *ngIf="showBack" (click)="onBack.emit()" class="btn btn-sm  mr-2 hover-opacity">
+			<i class="material-icons">arrow_back</i> вернуться на главную
+		</a>
+	</div>
 	<div *ngIf="!hideLogo" class="logo">
 		<img height="20" src="assets/logo.png">
 		<span class="text-muted ml-2">МВД России</span>
 	</div>
+	<div style="width:  200px;"></div>
 </header>

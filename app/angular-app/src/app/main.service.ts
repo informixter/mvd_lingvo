@@ -186,15 +186,28 @@ export class MainService
 
 	async gramma (text)
 	{
-		let fixes : any = await this.httpClient.get(`https://speller.yandex.net/services/spellservice.json/checkText?text=${text}`).toPromise();
+		let words = text.split(' '),
+			chunks = [],
+			i = 0;
 
-		fixes.filter(fix => fix.s !== undefined && fix.s.length > 0 && fix.word).forEach(fix =>
+		while (i < words.length)
 		{
-			let originalWord = fix.word,
-				newWord = fix.s[0];
+			chunks.push(words.slice(i, i + 100));
+			i+= 100;
+		}
 
-			text = text.replace(new RegExp(originalWord), newWord);
-		});
+		for (const chunk of chunks)
+		{
+			let fixes : any = await this.httpClient.get(`https://speller.yandex.net/services/spellservice.json/checkText?text=${chunk.join(' ')}`).toPromise();
+
+			fixes.filter(fix => fix.s !== undefined && fix.s.length > 0 && fix.word).forEach(fix =>
+			{
+				let originalWord = fix.word,
+					newWord = fix.s[0];
+
+				text = text.replace(new RegExp(originalWord), newWord);
+			});
+		}
 
 		return text;
 	}
@@ -447,4 +460,5 @@ export class MainService
 	{
 		return `${connector.shift ? 'Shift+' : ''}${connector.ctrl ? 'CommandOrControl+' : ''}${connector.alt ? 'Alt+' : ''}${connector.key}`;
 	}
+
 }
