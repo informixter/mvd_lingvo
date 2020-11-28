@@ -5,4 +5,4 @@ build_angular:
 
 build_electron_linux:
 	docker build -f=DockerfileElectron ./app/ -t electron-app
-	docker run --rm --entrypoint cat electron-app /app/out/make/deb/x64/mvd.linngvoprocessor_1.0.0_amd64.deb > ./deb/release.deb
+	docker run --rm --entrypoint cat electron-app /app/out/make/deb/x64/mvd.lingvoprocessor_1.0.0_amd64.deb > ./deb/release.deb

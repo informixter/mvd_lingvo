@@ -8,4 +8,4 @@ RUN mkdir -p /ng-app && cp -a /tmp/node_modules /ng-app
 
 COPY ./angular-app/ /ng-app
 WORKDIR /ng-app
-RUN npm run build
+RUN npm run build_docker
