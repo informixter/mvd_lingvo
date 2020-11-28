@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between mb-3">
+<div class="d-flex justify-content-between mt-1">
 	<h4>Преобразователи</h4>
 	<button (click)="onNewConnector.emit()" class="btn btn-sm run-script">
 		<i class="material-icons" style="vertical-align: -4px">add</i>
@@ -6,12 +6,12 @@
 </div>
 
 <p class="text-muted mb-4">
-	Преобразователи изменяют текст в зависимости от типа (например, меняют личные местоимения на 3 лицо).
+	Изменяют текст в зависимости от типа (например, меняют личные местоимения на 3 лицо).
 	Используйте сочетания клавиш, чтобы применить их к выделенному тексту (сначала скопируйте в буфер с помощью Ctrl-C).
 	<br/><br/>Вы так же можете воспользоваться подробным анализом, чтобы детально увидеть, как преобразуется текст. При выключении преобразователя сочетние клавиш работать не будет.
 </p>
 
-<div *ngFor="let connector of service.settings.connectors" class="card mb-4">
+<div *ngFor="let connector of service.settings.connectors" class="card mb-4" [class.active-border]="connector.enabled">
 	<div class="card-header d-flex justify-content-between" [class.alert-info]="connector.enabled">
 		<b class="w-50 card-title">
 			<span *ngIf="connector.type === 'FIRST_TO_THIRD'">Первое лицо в третье лицо</span>
@@ -26,11 +26,11 @@
 			</a>
 		</span>
 	</div>
-	<div class="card-body py-3">
+	<div class="card-body py-3" [class.active-bg]="connector.enabled">
 
 		<div class="row">
 			<div class="col-6">
-				<h5>Ctrl+C, затем {{getItemShortcut(connector)}}</h5>
+				<h5 [class.text-muted]="!connector.enabled">Ctrl+C, затем {{getItemShortcut(connector)}}</h5>
 			</div>
 			<div class="col-4">
 				<div>
@@ -38,8 +38,8 @@
 				</div>
 			</div>
 			<div class="col-2 pt-2">
-				<a *ngIf="connector.enabled" (click)="toggleConnector(connector, false)" href="#" class="text-danger hover-opacity">Выкл.</a>
-				<a *ngIf="!connector.enabled" (click)="toggleConnector(connector, true)" href="#" class="text-success hover-opacity">Вкл.</a>
+				<a *ngIf="connector.enabled" (click)="toggleConnector(connector, false)" href="#" class="text-danger hover-opacity">Отключить</a>
+				<a *ngIf="!connector.enabled" (click)="toggleConnector(connector, true)" href="#" class="text-success hover-opacity">Включить</a>
 			</div>
 		</div>
 		<!--<div class="d-flex">
