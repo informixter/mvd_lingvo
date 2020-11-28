@@ -130,10 +130,10 @@ else
 
 try
 {
-	if (!isWin)
-	{
-		app.dock.hide();
-	}
+	// if (!isWin)
+	// {
+	// 	app.dock.hide();
+	// }
 
 	// This method will be called when Electron has finished
 	// initialization and is ready to create browser windows.
