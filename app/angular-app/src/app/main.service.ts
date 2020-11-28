@@ -193,10 +193,7 @@ export class MainService
 			let originalWord = fix.word,
 				newWord = fix.s[0];
 
-			console.log(originalWord);
-			console.log(newWord);
-
-			text = text.replace(originalWord, newWord);
+			text = text.replace(new RegExp(originalWord), newWord);
 		});
 
 		return text;
@@ -387,14 +384,23 @@ export class MainService
 				wordsInfo[i].original = wordsInfo[i].original.replace(/люсь/, 'ится');
 				*/
 
-				// глаголы первой формы в прошедшее время
-				wordsInfo[i].original = wordsInfo[i].original.replace(/юсь[.,"'«»]?$/, sex === 'MALE' ? 'лся' : 'лась');
-				wordsInfo[i].original = wordsInfo[i].original.replace(/жусь[.,"'«»]?$/, sex === 'MALE' ? 'дился' : 'дилась');
-				wordsInfo[i].original = wordsInfo[i].original.replace(/гу[.,"'«»]?$/, sex === 'MALE' ? 'г' : 'гла');
-				wordsInfo[i].original = wordsInfo[i].original.replace(/аю[.,"'«»]?$/, sex === 'MALE' ? 'ал' : 'ала');
-				wordsInfo[i].original = wordsInfo[i].original.replace(/яю[.,"'«»]?$/, sex === 'MALE' ? 'ял' : 'яла');
-				wordsInfo[i].original = wordsInfo[i].original.replace(/ею[.,"'«»]?$/, sex === 'MALE' ? 'ел' : 'ела');
-				wordsInfo[i].original = wordsInfo[i].original.replace(/ем[.,"'«»]?$/, 'ли');
+				// проверяем связку глагол - глагол-инфинитив
+				if (wordsInfo[i].original.match(/у[.,"'«»]?$/) && wordsInfo[i + 1] && wordsInfo[i + 1].original.match(/ть[.,"'«»]?$/) && wordsInfo[i + 1].grammems.indexOf('V') !== -1)
+				{
+					wordsInfo[i].original = sex === "MALE" ? 'он' : 'она';
+					wordsInfo[i + 1].original = wordsInfo[i + 1].original.replace(/ть([.,"'«»])?$/, sex === "MALE" ? 'л$1' : 'ла$1');
+				}
+				else
+				{
+					// глаголы первой формы в прошедшее время
+					wordsInfo[i].original = wordsInfo[i].original.replace(/юсь([.,"'«»])?$/, sex === 'MALE' ? 'лся$1' : 'лась$1');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/жусь([.,"'«»])?$/, sex === 'MALE' ? 'дился$1' : 'дилась$1');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/гу([.,"'«»])?$/, sex === 'MALE' ? 'г$1' : 'гла$1');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/аю([.,"'«»])?$/, sex === 'MALE' ? 'ал$1' : 'ала$1');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/яю([.,"'«»])?$/, sex === 'MALE' ? 'ял$1' : 'яла$1');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/ею([.,"'«»])?$/, sex === 'MALE' ? 'ел$1' : 'ела$1');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/ем([.,"'«»])?$/, 'ли');
+				}
 			}
 
 			if (!wordsInfo[i].isPrivatePronoun)

@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --output-path=/ng-app/dist --outputHashing=bundles --aot=true --optimization=true --buildOptimizer=true --prod=true --progress=true --sourceMap=false",
+    "build": "ng build --outputHashing=bundles --optimization=true --aot=true --buildOptimizer=true --prod=true --progress=true --sourceMap=false",
+    "build_docker": "ng build --output-path=/ng-app/dist --outputHashing=bundles --aot=true --optimization=true --buildOptimizer=true --prod=true --progress=true --sourceMap=false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

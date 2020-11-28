@@ -11,8 +11,8 @@ app.allowRendererProcessReuse = false;
 function createWindow()
 {
 	win = new BrowserWindow({
-		width: serve ? 450 : 450,
-		height: serve ? 600 : 600,
+		width: serve ? 1200 : 450,
+		height: serve ? 900 : 600,
 		show: true,
 		fullscreenable: false,
 		resizable: false,
@@ -25,7 +25,10 @@ function createWindow()
 		}
 	});
 
-	win.webContents.openDevTools();
+	if (serve)
+	{
+		win.webContents.openDevTools();
+	}
 
 	win.webContents.on('new-window', function(event, url){
 		event.preventDefault();
@@ -73,7 +76,7 @@ function createTray()
 	if (serve)
 	{
 		items.unshift({ type : 'separator' });
-		items.unshift({ label: 'Открыть панель разработки', type: 'normal', role : 'toggleDevTools' });
+		//items.unshift({ label: 'Открыть панель разработки', type: 'normal', role : 'toggleDevTools' });
 	}
 
 	if (!isWin)
@@ -129,7 +132,7 @@ try
 {
 	if (!isWin)
 	{
-		// app.dock.hide();
+		app.dock.hide();
 	}
 
 	// This method will be called when Electron has finished

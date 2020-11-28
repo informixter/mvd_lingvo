@@ -1,15 +1,6 @@
-<header>
+<header class="d-flex justify-content-center">
 	<div *ngIf="!hideLogo" class="logo">
 		<img height="20" src="assets/logo.png">
 		<span class="text-muted ml-2">МВД России</span>
-	</div>
-	<div>
-		<ng-container *ngIf="service.settings && service.settings.accessToken">
-			<span class="text-muted mr-3">{{service.settings.email}}</span>
-			<a class="text-muted" (click)="logout()">Выход</a>
-		</ng-container>
-		<!--<ng-container *ngIf="service.settings && !service.settings.accessToken">
-			<a class="text-muted" (click)="toAuth.emit()">{{hideLogo ? 'Назад' : 'Войти'}}</a>
-		</ng-container>-->
 	</div>
 </header>

@@ -1,18 +1,17 @@
 {
-  "name": "mvd.linngvoprocessor",
-  "productName": "mvd.linngvoprocessor",
-  "executableName": "mvd.linngvoprocessor",
+  "name": "mvd.lingvoprocessor",
+  "productName": "mvd.lingvoprocessor",
   "version": "1.0.0",
-  "description": "MVDLingvoprocessor",
+  "description": "mvd.lingvoprocessor",
   "main": "electron.js",
   "scripts": {
     "start": "ENV=dev electron-forge start",
     "startProd": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "make_deb": "electron-forge make --platform linux",
     "publish": "electron-forge publish",
-    "icons": "./node_modules/.bin/electron-icon-maker  --output=angular-app/src/assets --input=angular-app/src/assets/logo.png",
+    "icons": "./node_modules/.bin/electron-icon-maker --input=angular-app/src/assets/logo.png --output=angular-app/src//assets",
+    "make_deb": "electron-forge make --platform linux",
     "lint": "echo \"No linting configured\""
   },
   "keywords": [],
@@ -24,8 +23,8 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "/app/build/icon.ico",
-        "name": "mvd.linngvoprocessor"
+        "icon": "C://test/build/assets/icons/win/icon.ico",
+        "name": "mvd.lingvoprocessor"
       },
       "makers": [
         {
@@ -54,8 +53,8 @@
     "electron-json-storage": "^4.3.0",
     "electron-selected-text": "^1.0.2",
     "install": "^0.13.0",
-    "npm": "^6.14.9",
     "mystem3": "^1.2.1",
+    "npm": "^6.14.9",
     "robotjs": "^0.6.0"
   },
   "devDependencies": {
