@@ -160,7 +160,7 @@ export class MainService
 				for (const line of lines)
 				{
 					lines[i] = await (connector.type !== 'GRAMMA' ? this.convert1stTo3rd(line) : this.gramma(line));
-					console.log(lines[i]);
+					//console.log(lines[i]);
 					i++;
 				}
 
@@ -214,6 +214,7 @@ export class MainService
 
 	async convert1stTo3rd (text)
 	{
+		console.log(text);
 		const myStem = new this.mystem();
 		myStem.start();
 
@@ -254,12 +255,11 @@ export class MainService
 				}
 			}
 
-			if (words[i].match(/["'«]/) && !dialogWordsMode)
+			if ((words[i].match(/[\"\'\«\“\‘]/) || words[i].match(/[\:\-\—]$/)) && !dialogWordsMode && !words[i].match(/[\"\'\»\“\‘][.,!?]?$/))
 			{
 				dialogWordsMode = true;
 			}
-
-			if (words[i].match(/["'»]/))
+			else if (words[i].match(/[\"\'\»\“\‘]/) || words[i].match(/\.|\n/m))
 			{
 				dialogWordsMode = false;
 			}
@@ -333,7 +333,7 @@ export class MainService
 					{
 						sex = grammems.indexOf("f") !== -1 ? "FEMALE" : "MALE";
 						sexChanged = true;
-						console.log(grammems, sex);
+						//console.log(grammems, sex);
 					}
 
 					// если найдена связка я <глагол>, то фиксируем пол, потому что это самый точный вариант
@@ -343,6 +343,15 @@ export class MainService
 					}
 
 					wordsInfo[lastPrivatePronounIndex].linkedVerbsIndexes.push(i);
+				}
+			}
+			else if (grammems.find(item => item.match(/A=/)) !== undefined)
+			{
+				// исключаем из анализа пола глаголы в формате под личное местоимения
+				if (!lockSex)
+				{
+					sex = grammems.indexOf("f") !== -1 ? "FEMALE" : "MALE";
+					sexChanged = true;
 				}
 			}
 		}
@@ -384,13 +393,11 @@ export class MainService
 
 		for (let i = 0, max = wordsInfo.length; i < max; i++)
 		{
-			console.log(wordsInfo[i]);
 			if (wordsInfo[i].inDialog)
 			{
 				continue;
 			}
 
-			//console.log(wordsInfo[i].grammems);
 			if (wordsInfo[i].grammems.indexOf('V') !== -1)
 			{
 				/*wordsInfo[i].original = wordsInfo[i].original.replace(/(а|я)ю/, sex === 'MALE' ? 'ил' : 'ила').replace('гил', 'жил');
@@ -399,7 +406,7 @@ export class MainService
 				*/
 
 				// проверяем связку глагол - глагол-инфинитив
-				if (wordsInfo[i].original.match(/у[.,"'«»]?$/) && wordsInfo[i + 1] && wordsInfo[i + 1].original.match(/ть[.,"'«»]?$/) && wordsInfo[i + 1].grammems.indexOf('V') !== -1)
+				if (wordsInfo[i - 2] && wordsInfo[i - 2].cleared !== 'я' && wordsInfo[i].original.match(/у[.,"'«»]?$/) && wordsInfo[i + 1] && wordsInfo[i + 1].original.match(/ть[.,"'«»]?$/) && wordsInfo[i + 1].grammems.indexOf('V') !== -1)
 				{
 					wordsInfo[i].original = sex === "MALE" ? 'он' : 'она';
 					wordsInfo[i + 1].original = wordsInfo[i + 1].original.replace(/ть([.,"'«»])?$/, sex === "MALE" ? 'л$1' : 'ла$1');
@@ -414,6 +421,7 @@ export class MainService
 					wordsInfo[i].original = wordsInfo[i].original.replace(/яю([.,"'«»])?$/, sex === 'MALE' ? 'ял$1' : 'яла$1');
 					wordsInfo[i].original = wordsInfo[i].original.replace(/ею([.,"'«»])?$/, sex === 'MALE' ? 'ел$1' : 'ела$1');
 					wordsInfo[i].original = wordsInfo[i].original.replace(/ем([.,"'«»])?$/, 'ли');
+					wordsInfo[i].original = wordsInfo[i].original.replace(/усь([.,"'«»])?$/, 'ится');
 				}
 			}
 
@@ -437,7 +445,7 @@ export class MainService
 				let formattedSubstitute = formatWord(wordsInfo[i].type, substitute);
 
 				// исключение для притяжательного местоимения мр
-				if (wordsInfo[i].withPredlog && substitute === 'нему')
+				if (wordsInfo[i].withPredlog && substitute === 'нему' && (!wordsInfo[i - 1] || ['ко'].indexOf(wordsInfo[i - 1].cleared) === -1))
 				{
 					formattedSubstitute = formatWord(wordsInfo[i].type, 'нем');
 				}
@@ -454,6 +462,9 @@ export class MainService
 		}
 
 		let formattedText = wordsInfo.map(item => item.original).join(' ');
+
+		formattedText = formattedText.replace(/настоящее время/i, "то время");
+
 		return formattedText;
 	}
 
