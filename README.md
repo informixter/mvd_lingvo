@@ -64,6 +64,7 @@ dpkg -i release.deb
 ### macOS 10.14+
 Для запуска системы требуется `make`
 ##### Подготовка 
+Устанвливаем [NodeJS 12](https://nodejs.org/en/download/releases/) и запускаем
 ```shell script
 sudo xcode-select --install
 ```
