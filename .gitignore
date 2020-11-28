@@ -1,3 +1,5 @@
+app/out
+app/build
 .idea
 deb
 # Logs

@@ -23,6 +23,7 @@
 | MacOs | 10.14+ | [lingvoprocessor-mac.zip](https://cdn.dataswarm.ru/lingvoprocessor-mac.zip) |
 
 ## Сборка приложений в режимe "очумелые ручки"
+![Debian 9](img/hands.jpg)
 Обратите внимание, что сборка приложений самостоятельно предполагает, что вы понимаете технические аспекты сборки ПО.
 ### Windows 7, 8, 10
 ##### Подготовка 
@@ -47,7 +48,7 @@ npm i
 ```shell script
 npm run make
 ```
-Создается папка dist в которой будет лежать инсталлятор приложения.
+Создается папка `out/make/x64/` в которой будет лежать инсталлятор приложения.
 
 ### Debian 9+
 Для запуска системы требуется Docker и make
@@ -59,3 +60,20 @@ make build build_linux
 ```shell script
 dpkg -i release.deb
 ```
+
+### macOS 10.14+
+Для запуска системы требуется `make`
+##### Подготовка 
+Устанвливаем [NodeJS 12](https://nodejs.org/en/download/releases/) и запускаем
+```shell script
+sudo xcode-select --install
+```
+Если возникает ошибка `xcode-select: error: command line tools are already installed, use "Software Update" to install updates`, то поможет следующая команда
+```shell script
+sudo rm -rf /Library/Developer/CommandLineTools && xcode-select --install
+```
+##### Сбор
+```shell script
+make build_macos
+```
+Создается папка `out/make/x64/` в которой будет лежать приложение.
