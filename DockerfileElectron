@@ -1,0 +1,16 @@
+FROM angular as builder-angular
+RUN ls -la
+
+FROM node:10-stretch
+RUN apt-get update && apt-get -y install build-essential gcc python
+RUN apt-get install -y libx11-dev libgtkextra-dev libgconf2-dev libnss3 libasound2 libxtst-dev libxss1
+ADD package.json /tmp/package.json
+RUN cd /tmp/ && npm install
+RUN mkdir -p /app && cp -a /tmp/node_modules /app
+COPY ./electron.js /app
+COPY ./package.json /app
+#COPY ./index.html /app
+COPY --from=builder-angular /ng-app/dist /app/build
+WORKDIR /app
+RUN apt-get install -y dpkg fakeroot make
+RUN yarn make_deb
