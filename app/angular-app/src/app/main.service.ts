@@ -384,6 +384,7 @@ export class MainService
 
 		for (let i = 0, max = wordsInfo.length; i < max; i++)
 		{
+			console.log(wordsInfo[i]);
 			if (wordsInfo[i].inDialog)
 			{
 				continue;
