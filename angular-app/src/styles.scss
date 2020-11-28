@@ -1,0 +1,81 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+
+html, body
+{
+	height: 100%;
+}
+
+body
+{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	margin: 0;
+}
+
+*
+{
+	box-sizing: border-box;
+}
+
+header, footer
+{
+	height: 35px;
+	padding: 5px 15px;
+	width: 100%;
+	background: #eee;
+}
+
+header a, footer a
+{
+	color: #777 !important;
+	font-size: 11px;
+	cursor: pointer;
+	line-height: 24px;
+}
+
+section
+{
+	height: calc(100% - 70px);
+	width: 100%;
+	padding: 10px 15px;
+	overflow-y: auto;
+}
+
+footer
+{
+	text-align: center;
+}
+
+header
+{
+	display: flex !important;
+	justify-content: space-between;
+}
+
+p
+{
+	font-size: 12px !important;
+}
+
+form label
+{
+	font-size: 12px;
+	margin-bottom: 0px;
+}
+
+.hover-opacity
+{
+	opacity: 0.6;
+	transition: all 200ms linear;
+	cursor: pointer;
+
+	&:hover
+	{
+		opacity: 1;
+	}
+}
+
+.asterisk
+{
+	color: red;
+	opacity: 0.8;
+}

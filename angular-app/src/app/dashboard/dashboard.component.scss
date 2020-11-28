@@ -1,0 +1,32 @@
+.card-header
+{
+	font-size: 14px;
+	padding: 5px 10px;
+	
+	.card-title
+	{
+		margin-bottom: 0px;
+		font-weight: 500;
+	}
+	
+	.material-icons
+	{
+		font-size: 18px;
+	}
+}
+
+.badge
+{
+	vertical-align: 1px;
+}
+
+.card-body
+{
+	padding: 10px 10px;
+	font-size: 12px;
+}
+
+.overflow-hidden
+{
+	text-overflow: ellipsis;
+}

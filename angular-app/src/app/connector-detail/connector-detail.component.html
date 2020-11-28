@@ -1,0 +1,51 @@
+<h4>{{connectorForEdit ? 'Редактирование преобразователя' : 'Новый преобразователь'}}</h4>
+
+<form (submit)="submit()">
+	<div class="form-group">
+		<label>Сочетание клавиш <span class="asterisk">*</span></label>
+		<div class="d-flex">
+			<select [(ngModel)]="key" name="key" class="form-control form-control-sm mr-5" style="width: 80px;">
+				<option value="" disabled>-</option>
+				<option *ngFor="let char of alpha" [value]="char">{{char}}</option>
+			</select>
+			<div class="form-check mr-3">
+				<input [(ngModel)]="shift" name="shiftCheck" class="form-check-input" type="checkbox" id="shift-check">
+				<label class="form-check-label" for="shift-check">
+					Shift
+				</label>
+			</div>
+			<div class="form-check mr-3">
+				<input [(ngModel)]="ctrl" name="ctrlCheck" class="form-check-input" type="checkbox" id="ctrl-check">
+				<label class="form-check-label" for="ctrl-check">
+					Ctrl
+				</label>
+			</div>
+			<div class="form-check">
+				<input [(ngModel)]="alt" name="altCheck" class="form-check-input" type="checkbox" id="alt-check">
+				<label class="form-check-label" for="alt-check">
+					Alt
+				</label>
+			</div>
+		</div>
+		<small class="form-text text-muted">
+
+		</small>
+	</div>
+	<div class="form-group">
+		<label>Тип преобразователя <span class="asterisk">*</span></label>
+		<select [(ngModel)]="type" name="frequency" class="form-control form-control-sm">
+			<option value="" disabled>-</option>
+			<option value="FIRST_TO_THIRD">Первое лицо в третье лицо</option>
+			<option value="GRAMMA">Орфография</option>
+		</select>
+		<small class="form-text text-muted">
+			Это действие будет выполняться при нажатии клавиш.
+		</small>
+	</div>
+
+	<div class="mt-3">
+		<button type="submit" class="btn btn-outline-primary btn-sm">{{connectorForEdit ? 'Сохранить изменения' : 'Создать преобразователь'}}</button>
+		<button (click)="onBack.emit()" class="btn text-danger btn-sm ml-2">Отмена</button>
+	</div>
+
+</form>
