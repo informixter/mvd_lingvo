@@ -47,7 +47,7 @@ npm i
 ```shell script
 npm run make
 ```
-Создается папка dist в которой будет лежать инсталлятор приложения.
+Создается папка `out/make/x64/` в которой будет лежать инсталлятор приложения.
 
 ### Debian 9+
 Для запуска системы требуется Docker и make
@@ -59,3 +59,19 @@ make build build_linux
 ```shell script
 dpkg -i release.deb
 ```
+
+### macOS 10.12+
+Для запуска системы требуется `make`
+##### Подготовка 
+```shell script
+sudo xcode-select --install
+```
+Если возникает ошибка `xcode-select: error: command line tools are already installed, use "Software Update" to install updates`, то поможет следующая команда
+```shell script
+sudo rm -rf /Library/Developer/CommandLineTools && xcode-select --install
+```
+##### Сбор
+```shell script
+make build_macos
+```
+Создается папка `out/make/x64/` в которой будет лежать приложение.

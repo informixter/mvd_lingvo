@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "quick-app"
+    }
+  },
+  "defaultProject": "quick-app",
+  "cli": {
+    "analytics": "eaf3857d-61fb-41fa-8053-791fccf54864"
+  }
 }
