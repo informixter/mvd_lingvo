@@ -60,7 +60,7 @@ make build build_linux
 dpkg -i release.deb
 ```
 
-### macOS 10.12+
+### macOS 10.14+
 Для запуска системы требуется `make`
 ##### Подготовка 
 ```shell script
