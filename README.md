@@ -21,9 +21,9 @@
 
 | Операционная система | Версия системы |  Ссылка | Примечание |
 | ------ | ------ | ------ | ------ |
-| Windows | 7, 8, 10 | [lingvoprocessor-win64.msi](https://cdn.dataswarm.ru/lingvoprocessor-win64.msi) | - |
-| Denian | 9+ | [lingvoprocessor-debian.deb](https://cdn.dataswarm.ru/lingvoprocessor-debian.deb) | - |
-| MacOs | 10.14+ | [lingvoprocessor-mac.zip](https://cdn.dataswarm.ru/lingvoprocessor-mac.zip) | Так как у нас нет сертификата разработчика, есть вероятность, что приложение потребует явно разрешить запуск через настройки. Или соберите свое приложение для теста. |
+| Windows | 7, 8, 10 | [lingvoprocessor-win64.msi](https://59830.selcdn.ru/cdn/lingvoprocessor-win64.msi) | - |
+| Denian | 9+ | [lingvoprocessor-debian.deb](https://59830.selcdn.ru/cdn/lingvoprocessor-debian.deb) | - |
+| MacOs | 10.14+ | [lingvoprocessor-mac.zip](https://59830.selcdn.ru/cdn/lingvoprocessor-mac.zip) | Так как у нас нет сертификата разработчика, есть вероятность, что приложение потребует явно разрешить запуск через настройки. Или соберите свое приложение для теста. |
 
 ## Сборка приложений в режимe "очумелые ручки"
 ![Debian 9](img/hands.jpg)
