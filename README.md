@@ -13,8 +13,8 @@
 ## Скриншоты
 | x | Linux | Windows | macOS |
 | --- | --- | --- | --- |
-| Основной экран | [смотреть](img/debian-main.jpg) | [смотреть](img/windows7.jpg) | - |
-| Редактор | [смотреть](img/debian-editor.jpg) | - | - |
+| Основной экран | [смотреть](/informixter/mvd_lingvo/blob/main/img/debian-editor.png) | [смотреть](/informixter/mvd_lingvo/blob/main/img/windows7.jpg) | - |
+| Редактор | [смотреть](/informixter/mvd_lingvo/blob/main/img/debian-editor.jpg) | - | - |
   
 ## Готовые приложения
 Ссылки на уже собранные приложения. 
