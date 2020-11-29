@@ -11,7 +11,10 @@
 ![Lingvo Processor](img/main.jpg) 
 
 ## Скриншоты
-[Windows 7](img/windows7.jpg) | [Debian 9](img/debian.jpg)
+| x | Linux | Windows | macOS |
+| --- | --- | --- | --- |
+| Основной экран | [смотреть](img/debian-main.jpg) | [смотреть](img/windows7.jpg) | - |
+| Редактор | [смотреть](img/debian-editor.jpg) | - | - |
   
 ## Готовые приложения
 Ссылки на уже собранные приложения. 

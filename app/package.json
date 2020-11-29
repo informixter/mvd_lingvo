@@ -14,7 +14,9 @@
     "make_deb": "electron-forge make --platform linux",
     "lint": "echo \"No linting configured\""
   },
-  "keywords": [],
+  "keywords": [
+
+  ],
   "author": {
     "name": "Chugunnii Skorohod",
     "email": "bereg.dmit@gmail.com"
