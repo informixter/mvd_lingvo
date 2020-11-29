@@ -11,7 +11,7 @@ app.allowRendererProcessReuse = false;
 function createWindow()
 {
 	win = new BrowserWindow({
-		width: serve ? 800 : 600,
+		width: serve ? 800 : 800,
 		height: serve ? 800 : 800,
 		show: true,
 		fullscreenable: false,

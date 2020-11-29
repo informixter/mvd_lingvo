@@ -255,7 +255,7 @@ export class MainService
 				}
 			}
 
-			if ((words[i].match(/[\"\'\«\“\‘]/) || words[i].match(/[\:\-\—]$/)) && !dialogWordsMode && !words[i].match(/[\"\'\»\“\‘][.,!?]?$/))
+			if ((words[i].match(/[\"\'\«\“\‘]/) || words[i].match(/[\:\-\—]$/)) && !dialogWordsMode && !words[i].match(/[\"\'\»\“\‘]?$/))
 			{
 				dialogWordsMode = true;
 			}
