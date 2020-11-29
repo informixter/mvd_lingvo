@@ -13,8 +13,8 @@
 ## Скриншоты
 | x | Linux | Windows 7 | macOS |
 | --- | --- | --- | --- |
-| Основной экран | [смотреть](/img/debian-main.png) | [смотреть](/img/windows7.jpg) | [смотреть](/img/macos-main.jpg) |
-| Редактор | [смотреть](/img/debian-editor.png) | - | [смотреть](/img/macos-editor.jpg) |
+| Основной экран | [смотреть](/img/debian-main.png) | [смотреть](/img/windows7-main.jpg) | [смотреть](/img/macos-main.jpg) |
+| Редактор | [смотреть](/img/debian-editor.png) | [смотреть](/img/windows7-editor.jpg) | [смотреть](/img/macos-editor.jpg) |
   
 ## Готовые приложения
 Ссылки на уже собранные приложения. 
