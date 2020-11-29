@@ -11,10 +11,10 @@
 ![Lingvo Processor](img/main.jpg) 
 
 ## Скриншоты
-| x | Linux | Windows | macOS |
+| x | Linux | Windows 7 | macOS |
 | --- | --- | --- | --- |
-| Основной экран | [смотреть](/img/debian-main.png) | [смотреть](/img/windows7.jpg) | - |
-| Редактор | [смотреть](/img/debian-editor.png) | - | - |
+| Основной экран | [смотреть](/img/debian-main.png) | [смотреть](/img/windows7.jpg) | [смотреть](/img/macos-main.jpg) |
+| Редактор | [смотреть](/img/debian-editor.png) | - | [смотреть](/img/macos-editor.jpg) |
   
 ## Готовые приложения
 Ссылки на уже собранные приложения. 
